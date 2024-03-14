@@ -10,8 +10,8 @@ import { useToast } from '@/hooks/use-toast'
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const loginWithGoogle = async () => {
     setIsLoading(true)
