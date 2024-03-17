@@ -81,13 +81,13 @@ model Subscription {
 }
 
 model Post {
-  id           String     @id @default(cuid())
-  title        String
-  content      Json?
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  subBreadit   SubBreadit @relation(fields: [subBreaditId], references: [id])
-  subBreaditId String
+  id          String     @id @default(cuid())
+  title       String
+  content     Json?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  subreadit   SubBreadit @relation(fields: [subBreaditId], references: [id])
+  subreaditId String
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String
@@ -106,7 +106,7 @@ model Comment {
   postId    String
 
   replyToId String?
-  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replyTo   Comment?  @relation("ReplyTo", fields: [replyToId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   replies   Comment[] @relation("ReplyTo")
 
   votes     CommentVote[]
