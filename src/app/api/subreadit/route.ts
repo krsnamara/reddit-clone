@@ -42,6 +42,6 @@ export async function POST(req: Request) {
       return new Response(error.message, { status: 422 })
     }
 
-    return new Response('Could not create subreadit 500', { status: 500 })
+    return new Response('Could not create subreadit', { status: 500 })
   }
 }
