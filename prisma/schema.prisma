@@ -48,7 +48,7 @@ model User {
   name              String?
   email             String?        @unique
   emailVerified     DateTime?
-  createdSubreadits SubBreadit[]   @relation("CreatedBy")
+  createdSubreadits Subreadit[]    @relation("CreatedBy")
   subscriptions     Subscription[]
   votes             Vote[]
 
@@ -62,7 +62,7 @@ model User {
   CommentVote CommentVote[]
 }
 
-model SubBreadit {
+model Subreadit {
   id        String   @id @default(cuid())
   name      String   @unique
   createdAt DateTime @default(now())
@@ -77,23 +77,23 @@ model SubBreadit {
 }
 
 model Subscription {
-  user        User       @relation(fields: [userId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
   userId      String
-  subreadit   SubBreadit @relation(fields: [subreaditId], references: [id])
+  subreadit   Subreadit @relation(fields: [subreaditId], references: [id])
   subreaditId String
 
   @@id([userId, subreaditId])
 }
 
 model Post {
-  id          String     @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   content     Json?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  author      User       @relation(fields: [authorId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  author      User      @relation(fields: [authorId], references: [id])
   authorId    String
-  subreadit   SubBreadit @relation(fields: [subreaditId], references: [id])
+  subreadit   Subreadit @relation(fields: [subreaditId], references: [id])
   subreaditId String
   comments    Comment[]
   votes       Vote[]
