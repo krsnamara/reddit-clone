@@ -36,12 +36,12 @@ export async function POST(req: Request) {
       },
     })
 
-    return new Response(subreadit.name, { status: 201 })
+    return new Response(subreadit.name, { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 422 })
     }
 
-    return new Response('Could not create subreadit', { status: 500 })
+    return new Response('Could not create subreadit 500', { status: 500 })
   }
 }
